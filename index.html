@@ -88,6 +88,23 @@ header.nav{
 .btn-ghost:hover{background:var(--ink);color:var(--paper)}
 .btn svg{width:15px;height:15px}
 
+/* circular hero photo */
+.hero-photo{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.hero-photo img{
+  width:360px;
+  height:360px;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid var(--ink);
+  box-shadow:var(--shadow);
+  background:#0c1418;
+}
+
 /* dimension line under name (signature element) */
 .dimline{margin-top:26px;max-width:430px}
 .dimline svg{width:100%;height:34px;overflow:visible}
@@ -396,16 +413,21 @@ section.block{padding:88px 0}
       <p class="lead">I take metal parts and electromechanical assemblies from concept through design, analysis, and release to manufacturing — grounded in GD&amp;T, tolerance stack-ups, and DFM/DFA.</p>
 
       <div class="dimline" aria-hidden="true">
-        <svg viewBox="0 0 430 34" preserveAspectRatio="none">
-          <path class="ext" d="M2 6 V28"/>
-          <path class="ext" d="M428 6 V28"/>
-          <path class="dl dl-anim" d="M2 17 H428"/>
-          <path class="dl" d="M2 17 l8 -4 v8 z" fill="var(--accent)"/>
-          <path class="dl" d="M428 17 l-8 -4 v8 z" fill="var(--accent)"/>
-          <rect x="150" y="9" width="130" height="16" fill="var(--paper)"/>
-          <text class="dimtxt" x="215" y="21" text-anchor="middle">~3 YRS · DESIGN·MFG·R&amp;D</text>
-        </svg>
-      </div>
+  <svg viewBox="0 0 430 34" preserveAspectRatio="none">
+    <path class="ext" d="M45 6 V28"/>
+    <path class="ext" d="M385 6 V28"/>
+
+    <path class="dl dl-anim" d="M45 17 H385"/>
+
+    <path class="dl" d="M45 17 l8 -4 v8 z" fill="var(--accent)"/>
+    <path class="dl" d="M385 17 l-8 -4 v8 z" fill="var(--accent)"/>
+
+    <rect x="145" y="9" width="140" height="16" fill="var(--paper)"/>
+    <text class="dimtxt" x="215" y="21" text-anchor="middle">
+      ~3 YRS · DESIGN·MFG·R&amp;D
+    </text>
+  </svg>
+</div>
 
       <div class="hero-actions">
         <a class="btn btn-solid" href="#work">
@@ -420,19 +442,12 @@ section.block{padding:88px 0}
     </div>
 
     <div class="dwg reveal">
-      <div class="view">
-        <img src="images/P_Patil.png" alt="Profile_photo" />
-        <span class="corner c-tl"></span><span class="corner c-tr"></span>
-        <span class="corner c-bl"></span><span class="corner c-br"></span>
-      </div>
-      <div class="titleblock">
-        <div class="tb-cell"><div class="k">Drawn</div><div class="v">P. PATIL</div></div>
-        <div class="tb-cell"><div class="k">CAD</div><div class="v">SIEMENS NX</div></div>
-        <div class="tb-cell"><div class="k">Scale</div><div class="v">1:1</div></div>
-        <div class="tb-cell"><div class="k">Rev</div><div class="v">B</div></div>
-      </div>
-    </div>
+      <div class="dwg reveal">
+  <div class="view">
+    <img src="images/ar-yolo-detection.jpg"
+         alt="Portrait of Priyanka Patil" />
   </div>
+</div>
 </section>
 
 <!-- ================= CAPABILITIES ================= -->
