@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Priyanka Patil — Mechanical Design Engineer</title>
+<meta name="description" content="Portfolio of Priyanka Patil, Mechanical Design Engineer. CAD, GD&T (ASME Y14.5), FEA, DFM/DFA, and AR/VR engineering research." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#ECEEEC; --paper-2:#E4E7E5; --card:#FFFFFF;
+  --ink:#181B1D; --ink-2:#565C5E; --ink-3:#7C8385;
+  --line:#C6CCCA; --line-2:#D6DBD9;
+  --blue:#0E3357; --blue-2:#0A2540; --blue-line:rgba(255,255,255,.14);
+  --accent:#1E9DB0; --accent-ink:#0C6B7A;
+  --grid:rgba(24,27,29,.05);
+  --shadow:0 1px 2px rgba(16,28,38,.06),0 10px 30px -12px rgba(16,28,38,.18);
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Inter",system-ui,sans-serif;line-height:1.6;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+h1,h2,h3,h4{font-family:"Archivo",sans-serif;margin:0;line-height:1.05;font-weight:800;letter-spacing:-.01em}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.mono{font-family:"IBM Plex Mono",monospace}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+
+/* ---- drafting grid background ---- */
+.grid-bg{
+  background-image:
+    linear-gradient(var(--grid) 1px,transparent 1px),
+    linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:28px 28px;
+}
+
+/* ---- eyebrow / labels ---- */
+.eyebrow{
+  font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:500;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--accent-ink);
+  display:inline-flex;align-items:center;gap:10px;
+}
+.eyebrow::before{content:"";width:22px;height:1px;background:var(--accent);display:inline-block}
+
+/* ================= NAV ================= */
+header.nav{
+  position:sticky;top:0;z-index:50;background:rgba(236,238,236,.82);
+  backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid var(--line);
+}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:62px}
+.brand{display:flex;align-items:center;gap:12px;font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:14px;letter-spacing:.02em}
+.brand .mk{
+  width:30px;height:30px;border:1.5px solid var(--ink);display:grid;place-items:center;
+  font-family:"Archivo";font-weight:800;font-size:13px;letter-spacing:0;
+}
+.nav-links{display:flex;align-items:center;gap:26px}
+.nav-links a{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--ink-2);letter-spacing:.02em;transition:color .2s}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{
+  font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.03em;
+  border:1.5px solid var(--ink);padding:8px 14px;color:var(--ink);transition:all .2s;
+}
+.nav-cta:hover{background:var(--ink);color:var(--paper)}
+.nav-toggle{display:none}
+
+/* ================= HERO ================= */
+.hero{position:relative;padding:72px 0 40px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(44px,7vw,86px);letter-spacing:-.02em}
+.hero h1 .ln2{display:block;color:var(--ink-3)}
+.role{font-family:"IBM Plex Mono",monospace;font-size:15px;letter-spacing:.04em;color:var(--ink-2);margin-top:18px}
+.hero p.lead{font-size:18px;color:var(--ink-2);max-width:38ch;margin:20px 0 0}
+.hero-actions{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap}
+.btn{
+  font-family:"IBM Plex Mono",monospace;font-size:13.5px;letter-spacing:.02em;
+  padding:13px 20px;display:inline-flex;align-items:center;gap:9px;transition:all .22s;border:1.5px solid var(--ink);
+}
+.btn-solid{background:var(--ink);color:var(--paper)}
+.btn-solid:hover{background:var(--blue);border-color:var(--blue)}
+.btn-ghost{color:var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:var(--paper)}
+.btn svg{width:15px;height:15px}
+
+/* dimension line under name (signature element) */
+.dimline{margin-top:26px;max-width:430px}
+.dimline svg{width:100%;height:34px;overflow:visible}
+.dimline .dl{stroke:var(--accent);stroke-width:1.4;fill:none}
+.dimline .ext{stroke:var(--ink-3);stroke-width:1;fill:none}
+.dimtxt{font-family:"IBM Plex Mono",monospace;font-size:11.5px;fill:var(--ink-2);letter-spacing:.08em}
+
+/* hero drawing frame */
+.dwg{position:relative;background:var(--card);border:1.5px solid var(--ink);box-shadow:var(--shadow)}
+.dwg .view{position:relative;overflow:hidden;background:#0c1418}
+.dwg .view img{width:100%;height:100%;object-fit:cover;aspect-ratio:16/9;filter:contrast(1.03)}
+.dwg .corner{position:absolute;width:12px;height:12px;border:1.5px solid var(--accent)}
+.c-tl{top:8px;left:8px;border-right:none;border-bottom:none}
+.c-tr{top:8px;right:8px;border-left:none;border-bottom:none}
+.c-bl{bottom:8px;left:8px;border-right:none;border-top:none}
+.c-br{bottom:8px;right:8px;border-left:none;border-top:none}
+/* title block */
+.titleblock{display:grid;grid-template-columns:repeat(4,1fr);border-top:1.5px solid var(--ink)}
+.tb-cell{padding:9px 12px;border-right:1px solid var(--line);font-family:"IBM Plex Mono",monospace}
+.tb-cell:last-child{border-right:none}
+.tb-cell .k{font-size:9.5px;letter-spacing:.12em;color:var(--ink-3);text-transform:uppercase}
+.tb-cell .v{font-size:12.5px;color:var(--ink);margin-top:2px;font-weight:500}
+
+/* ================= CAPABILITIES STRIP ================= */
+.caps{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--paper-2)}
+.caps-in{display:flex;flex-wrap:wrap;gap:10px 10px;padding:22px 0}
+.chip{
+  font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.02em;color:var(--ink);
+  border:1px solid var(--line);background:var(--card);padding:7px 13px;
+}
+.chip b{color:var(--accent-ink);font-weight:600}
+
+/* ================= SECTION SCAFFOLD ================= */
+section.block{padding:88px 0}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:44px;flex-wrap:wrap}
+.sec-head h2{font-size:clamp(28px,4vw,44px)}
+.sec-head .idx{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.14em;color:var(--ink-3)}
+.sec-kicker{margin-bottom:14px}
+
+/* ================= PROJECTS ================= */
+.project{margin-bottom:74px;scroll-margin-top:80px}
+.project:last-child{margin-bottom:0}
+.p-top{display:flex;align-items:baseline;gap:16px;margin-bottom:22px}
+.p-no{font-family:"Archivo";font-weight:800;font-size:15px;color:var(--accent-ink);letter-spacing:.04em}
+.p-title{font-size:clamp(22px,3vw,32px)}
+.p-body{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:start}
+.p-body.rev{grid-template-columns:.85fr 1.15fr}
+.p-body.rev .p-media{order:-1}
+.p-desc p{color:var(--ink-2);margin:0 0 16px}
+.p-desc p strong{color:var(--ink);font-weight:600}
+.meta{border-top:1px solid var(--line);margin-top:22px}
+.meta div{display:grid;grid-template-columns:120px 1fr;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-family:"IBM Plex Mono",monospace;font-size:12.5px}
+.meta .mk{color:var(--ink-3);letter-spacing:.08em;text-transform:uppercase;font-size:11px}
+.meta .mv{color:var(--ink)}
+.impact{margin-top:22px;padding:14px 16px;background:var(--paper-2);border-left:2px solid var(--accent);font-size:14px;color:var(--ink)}
+.impact .lab{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-ink);display:block;margin-bottom:4px}
+
+/* media */
+.p-media{display:flex;flex-direction:column;gap:14px}
+.shot{position:relative;overflow:hidden;border:1.5px solid var(--ink);background:#0c1418;box-shadow:var(--shadow)}
+.shot img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.shot:hover img{transform:scale(1.035)}
+.shot .cap{
+  position:absolute;left:0;bottom:0;font-family:"IBM Plex Mono",monospace;font-size:10.5px;
+  letter-spacing:.06em;background:rgba(10,20,26,.82);color:#dfe8ea;padding:5px 10px;
+}
+.shot-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.stat-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:4px}
+.stat{border:1px solid var(--line);background:var(--card);padding:12px 16px;min-width:120px}
+.stat .n{font-family:"Archivo";font-weight:800;font-size:26px;color:var(--blue);letter-spacing:-.01em}
+.stat .l{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.06em;color:var(--ink-3);text-transform:uppercase;margin-top:3px}
+
+/* drafting feature (dark) */
+.draft{background:var(--blue);color:#eaf1f4;position:relative}
+.draft .wrap{position:relative;z-index:2}
+.draft .eyebrow{color:#7fd3df}
+.draft .eyebrow::before{background:#7fd3df}
+.draft h2{color:#fff}
+.draft .sec-head .idx{color:rgba(255,255,255,.5)}
+.draft-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.draft p{color:rgba(234,241,244,.82)}
+.draft .dframe{border:1.5px solid var(--blue-line);background:#0b2b49;padding:10px;box-shadow:0 20px 50px -20px rgba(0,0,0,.6)}
+.draft .dframe img{width:100%;background:#fff}
+.draft ul.pts{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:12px}
+.draft ul.pts li{font-family:"IBM Plex Mono",monospace;font-size:13px;color:#cfe1e7;display:flex;gap:12px;align-items:flex-start}
+.draft ul.pts li::before{content:"+";color:#7fd3df;font-weight:700}
+
+/* ================= EXPERIENCE TIMELINE ================= */
+.tl{border-top:1px solid var(--line)}
+.tl-row{display:grid;grid-template-columns:150px 1fr;gap:32px;padding:26px 0;border-bottom:1px solid var(--line);align-items:start}
+.tl-when{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--ink-3);letter-spacing:.02em}
+.tl-role{font-family:"Archivo";font-weight:700;font-size:19px}
+.tl-org{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--accent-ink);margin-top:3px}
+.tl-desc{color:var(--ink-2);margin-top:10px;font-size:14.5px}
+.tl-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+.tl-tags span{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-2);border:1px solid var(--line);padding:4px 9px}
+
+/* ================= SKILLS ================= */
+.skills{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.skill-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.skill-card{background:var(--card);border:1px solid var(--line);padding:22px}
+.skill-card h4{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-ink);font-weight:600}
+.skill-card ul{list-style:none;padding:0;margin:14px 0 0;display:flex;flex-wrap:wrap;gap:8px}
+.skill-card li{font-size:13px;color:var(--ink);border-bottom:1px solid var(--line-2);padding-bottom:1px}
+.skill-card li:not(:last-child)::after{content:"·";color:var(--ink-3);margin-left:8px}
+
+/* ================= EDUCATION / CERTS ================= */
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.edu-item{border-top:1.5px solid var(--ink);padding-top:16px;margin-bottom:24px}
+.edu-item .d{font-family:"Archivo";font-weight:700;font-size:18px}
+.edu-item .s{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--ink-2);margin-top:4px}
+.edu-item .y{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-3);margin-top:2px}
+.certs{display:grid;gap:10px}
+.certs .c{display:flex;gap:12px;align-items:flex-start;font-size:14px;color:var(--ink);border-bottom:1px solid var(--line);padding-bottom:10px}
+.certs .c .cn{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--accent-ink)}
+
+/* ================= CONTACT / FOOTER ================= */
+.contact{background:var(--blue);color:#eaf1f4;position:relative;overflow:hidden}
+.contact .wrap{position:relative;z-index:2}
+.contact .eyebrow{color:#7fd3df}
+.contact .eyebrow::before{background:#7fd3df}
+.contact h2{color:#fff;font-size:clamp(30px,5vw,54px);max-width:16ch;margin-top:16px}
+.contact p.sub{color:rgba(234,241,244,.8);max-width:46ch;margin:18px 0 34px;font-size:16px}
+.contact-actions{display:flex;gap:14px;flex-wrap:wrap}
+.cbtn{font-family:"IBM Plex Mono",monospace;font-size:13.5px;padding:13px 20px;border:1.5px solid rgba(255,255,255,.55);color:#fff;display:inline-flex;gap:9px;align-items:center;transition:all .22s}
+.cbtn:hover{background:#fff;color:var(--blue);border-color:#fff}
+.cbtn.solid{background:var(--accent);border-color:var(--accent);color:#04262c}
+.cbtn.solid:hover{background:#fff;border-color:#fff;color:var(--blue)}
+.finfo{display:flex;flex-wrap:wrap;gap:26px 46px;margin-top:56px;padding-top:26px;border-top:1px solid var(--blue-line)}
+.finfo div .k{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#7fd3df}
+.finfo div .v{font-family:"IBM Plex Mono",monospace;font-size:13.5px;color:#eaf1f4;margin-top:5px}
+.finfo div .v a:hover{color:#7fd3df}
+.foot-btm{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:38px;font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:rgba(234,241,244,.55)}
+
+/* ================= REVEAL ANIM ================= */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:38px}
+  .p-body,.p-body.rev{grid-template-columns:1fr;gap:26px}
+  .p-body.rev .p-media{order:0}
+  .draft-grid{grid-template-columns:1fr;gap:28px}
+  .skill-grid{grid-template-columns:1fr}
+  .edu-grid{grid-template-columns:1fr;gap:8px}
+  .nav-links{display:none}
+  .nav-links.open{display:flex;position:absolute;top:62px;left:0;right:0;flex-direction:column;gap:0;background:var(--paper);border-bottom:1px solid var(--line);padding:8px 28px 18px}
+  .nav-links.open a{padding:11px 0;border-bottom:1px solid var(--line-2)}
+  .nav-links.open .nav-cta{margin-top:12px;text-align:center}
+  .nav-toggle{display:inline-flex;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px}
+  .nav-toggle span{width:22px;height:2px;background:var(--ink);display:block}
+  section.block{padding:64px 0}
+  .tl-row{grid-template-columns:1fr;gap:6px}
+}
+@media(max-width:560px){
+  .wrap{padding:0 20px}
+  .titleblock{grid-template-columns:repeat(2,1fr)}
+  .tb-cell:nth-child(2){border-right:none}
+  .shot-row{grid-template-columns:1fr}
+  .stat{flex:1}
+}
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+  .shot:hover img{transform:none}
+  .dl-anim{stroke-dasharray:none!important;stroke-dashoffset:0!important}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top"><span class="mk">PP</span>PRIYANKA&nbsp;PATIL</a>
+    <nav class="nav-links" id="navlinks">
+      <a href="#work">Work</a>
+      <a href="#drafting">Drafting</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+      <a class="nav-cta" href="assets/Priyanka_Patil_Resume_Master.pdf" target="_blank" rel="noopener">Résumé ↗</a>
+    </nav>
+    <button class="nav-toggle" id="navtoggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero grid-bg" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Mechanical Design Engineer</span>
+      <h1 style="margin-top:18px">Priyanka<br><span class="ln2">Patil</span></h1>
+      <div class="role">Concept → CAD → GD&amp;T → Prototype → Release</div>
+      <p class="lead">I take metal parts and electromechanical assemblies from concept through design, analysis, and release to manufacturing — grounded in GD&amp;T, tolerance stack-ups, and DFM/DFA.</p>
+
+      <div class="dimline" aria-hidden="true">
+        <svg viewBox="0 0 430 34" preserveAspectRatio="none">
+          <path class="ext" d="M2 6 V28"/>
+          <path class="ext" d="M428 6 V28"/>
+          <path class="dl dl-anim" d="M2 17 H428"/>
+          <path class="dl" d="M2 17 l8 -4 v8 z" fill="var(--accent)"/>
+          <path class="dl" d="M428 17 l-8 -4 v8 z" fill="var(--accent)"/>
+          <rect x="150" y="9" width="130" height="16" fill="var(--paper)"/>
+          <text class="dimtxt" x="215" y="21" text-anchor="middle">~3 YRS · DESIGN·MFG·R&amp;D</text>
+        </svg>
+      </div>
+
+      <div class="hero-actions">
+        <a class="btn btn-solid" href="#work">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          View selected work
+        </a>
+        <a class="btn btn-ghost" href="assets/Priyanka_Patil_Resume_Master.pdf" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
+          Download résumé
+        </a>
+      </div>
+    </div>
+
+    <div class="dwg reveal">
+      <div class="view">
+        <img src="images/cad-ald-assembly.jpg" alt="1:1 scale CAD assembly of atomic layer deposition equipment modeled in Siemens NX" />
+        <span class="corner c-tl"></span><span class="corner c-tr"></span>
+        <span class="corner c-bl"></span><span class="corner c-br"></span>
+      </div>
+      <div class="titleblock">
+        <div class="tb-cell"><div class="k">Drawn</div><div class="v">P. PATIL</div></div>
+        <div class="tb-cell"><div class="k">CAD</div><div class="v">SIEMENS NX</div></div>
+        <div class="tb-cell"><div class="k">Scale</div><div class="v">1:1</div></div>
+        <div class="tb-cell"><div class="k">Rev</div><div class="v">B</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CAPABILITIES ================= -->
+<div class="caps">
+  <div class="wrap caps-in">
+    <span class="chip"><b>CAD</b> · Siemens NX · Creo · SolidWorks · CATIA V5 · AutoCAD</span>
+    <span class="chip"><b>GD&amp;T</b> · ASME Y14.5 · Tolerance stack-up</span>
+    <span class="chip"><b>Analysis</b> · ANSYS FEA · DFMEA</span>
+    <span class="chip"><b>Manufacturing</b> · DFM / DFA · Sheet metal · Tooling</span>
+    <span class="chip"><b>PLM</b> · Teamcenter · SAP · BOM / ECO</span>
+  </div>
+</div>
+
+<!-- ================= SELECTED WORK ================= -->
+<section class="block" id="work">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="eyebrow sec-kicker">Selected Work</span>
+        <h2>Glimpses from the bench</h2>
+      </div>
+      <span class="idx">04 PROJECTS</span>
+    </div>
+
+    <!-- PROJECT 01 -->
+    <article class="project reveal">
+      <div class="p-top"><span class="p-no">01</span><h3 class="p-title">VR Training for Semiconductor Chip Manufacturing</h3></div>
+      <div class="p-body">
+        <div class="p-desc">
+          <p>Built a <strong>1:1 scale 3D CAD model of Atomic Layer Deposition equipment</strong> in Siemens NX to anchor an immersive semiconductor-fabrication training program, tied to hands-on work in the cleanroom and metrology lab.</p>
+          <p>Modeled functional parts and assemblies, then created virtual materials and rendered the models in <strong>Unreal Engine</strong> to build a faithful virtual replica of the real equipment for VR training.</p>
+          <div class="meta">
+            <div><span class="mk">Role</span><span class="mv">Graduate Research Assistant</span></div>
+            <div><span class="mk">Tools</span><span class="mv">Siemens NX · Unreal Engine · Blender</span></div>
+            <div><span class="mk">Focus</span><span class="mv">CAD modeling · VR content · Rendering</span></div>
+            <div><span class="mk">Year</span><span class="mv">2025 – Present · Univ. of Cincinnati</span></div>
+          </div>
+          <div class="impact"><span class="lab">Impact</span>A 1:1 virtual twin of ALD equipment that lets trainees rehearse fabrication procedures before touching cleanroom hardware.</div>
+        </div>
+        <div class="p-media">
+          <div class="shot"><img src="images/vr-render-cleanroom.jpg" alt="Photorealistic Unreal Engine render of semiconductor equipment in a lab environment"><span class="cap">UNREAL ENGINE · VIRTUAL EQUIPMENT</span></div>
+          <div class="shot-row">
+            <div class="shot"><img src="images/cad-equipment.jpg" alt="Siemens NX CAD model of deposition equipment"><span class="cap">NX · CAD MODEL</span></div>
+            <div class="shot"><img src="images/vr-scene.jpg" alt="Virtual reality training scene of the equipment"><span class="cap">VR SCENE</span></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- PROJECT 02 -->
+    <article class="project reveal">
+      <div class="p-top"><span class="p-no">02</span><h3 class="p-title">LLM-Assisted AR Assembly Training &amp; Component Recognition</h3></div>
+      <div class="p-body rev">
+        <div class="p-desc">
+          <p>Created mechanical assemblies and assembly animations in Siemens NX and Blender, integrated them into <strong>Unity</strong>, and built an AR system that drives the animations through <strong>voice commands interpreted by an LLM</strong> — guiding new users step-by-step through assembly tasks.</p>
+          <p>Trained a custom <strong>YOLOv8</strong> model on mechanical-component imagery and deployed it in an AR app on <strong>Meta Quest 3</strong> for real-time part recognition supporting maintenance and training.</p>
+          <div class="stat-row">
+            <div class="stat"><div class="n">~95%</div><div class="l">YOLOv8 test accuracy</div></div>
+            <div class="stat"><div class="n">60%+</div><div class="l">Live AR recognition</div></div>
+          </div>
+          <div class="meta">
+            <div><span class="mk">Role</span><span class="mv">Graduate Research Assistant</span></div>
+            <div><span class="mk">Tools</span><span class="mv">Unity · YOLOv8 · Meta Quest 3 · NX · Blender</span></div>
+            <div><span class="mk">Focus</span><span class="mv">AR · LLM voice control · Computer vision</span></div>
+          </div>
+        </div>
+        <div class="p-media">
+          <div class="shot"><img src="images/ar-yolo-detection.jpg" alt="Augmented reality app recognizing a mechanical component in real time with a bounding box"><span class="cap">AR · REAL-TIME COMPONENT DETECTION</span></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- PROJECT 03 -->
+    <article class="project reveal">
+      <div class="p-top"><span class="p-no">03</span><h3 class="p-title">Structural &amp; Thermal Analysis</h3></div>
+      <div class="p-body">
+        <div class="p-desc">
+          <p><strong>Femur biomaterials study</strong> — Analyzed the mechanical behavior of femur biomaterials in ANSYS, comparing Co–Cr alloys and PMMA on load-carrying capacity and stress distribution to guide material selection.</p>
+          <p><strong>Thermoelectric generator in a jet engine</strong> — Ran thermal-structural analysis and parametric optimization of a TEG under heat-transfer constraints, reaching ~6–7% conversion efficiency in the validated design window.</p>
+          <p><strong>Blood plasma separation (microfluidics)</strong> — Simulation-driven design validation in ANSYS with hex-dominant meshing, achieving numerical convergence at 1e-11 and confirming feasibility of the micro flow-path.</p>
+          <div class="meta">
+            <div><span class="mk">Tools</span><span class="mv">ANSYS Mechanical · Hex-dominant meshing</span></div>
+            <div><span class="mk">Methods</span><span class="mv">FEA · Parametric optimization · Flow analysis</span></div>
+            <div><span class="mk">Context</span><span class="mv">Graduate coursework · Univ. of Cincinnati</span></div>
+          </div>
+        </div>
+        <div class="p-media">
+          <div class="shot"><img src="images/femur-mesh.jpg" alt="Finite element mesh of a femur bone model"><span class="cap">FE MESH · FEMUR MODEL</span></div>
+          <div class="shot"><img src="images/femur-stress.jpg" alt="Stress distribution contour plot on the femur model"><span class="cap">STRESS DISTRIBUTION</span></div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ================= DRAFTING FEATURE (dark) ================= -->
+<section class="block draft grid-bg" id="drafting">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="eyebrow sec-kicker">Detailed Drafting</span>
+        <h2>Drawings built for the shop floor</h2>
+      </div>
+      <span class="idx">ASME Y14.5</span>
+    </div>
+    <div class="draft-grid reveal">
+      <div class="dframe"><img src="images/gdt-drawing.jpg" alt="2D manufacturing drawing with dimensions, tolerances, and a GD&T title block"></div>
+      <div>
+        <p>Every model earns its keep as a <strong style="color:#fff">fabrication-ready 2D drawing</strong>. I produce fully dimensioned, tolerance-driven manufacturing drawings with a complete title block, material callouts, and interpretation per ASME Y14.5 — the documents machinists and vendors actually build from.</p>
+        <ul class="pts">
+          <li>GD&amp;T &amp; tolerance stack-up analysis for fit and clearance</li>
+          <li>Title blocks, BOMs, and revision control</li>
+          <li>Dimensional inspection against print</li>
+          <li>DFM / DFA feedback folded back into the model</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EXPERIENCE ================= -->
+<section class="block" id="experience">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="eyebrow sec-kicker">Experience</span>
+        <h2>Where I've engineered</h2>
+      </div>
+      <span class="idx">2019 → NOW</span>
+    </div>
+    <div class="tl reveal">
+
+      <div class="tl-row">
+        <div class="tl-when">Feb 2025 — Present</div>
+        <div>
+          <div class="tl-role">Graduate Research Assistant</div>
+          <div class="tl-org">University of Cincinnati · Cincinnati, OH</div>
+          <div class="tl-desc">CAD modeling and AR/VR engineering research: 1:1 ALD equipment models, LLM-driven AR assembly training, and a YOLOv8 component-recognition pipeline for maintenance and training.</div>
+          <div class="tl-tags"><span>Siemens NX</span><span>Unreal</span><span>Unity</span><span>YOLOv8</span><span>Blender</span></div>
+        </div>
+      </div>
+
+      <div class="tl-row">
+        <div class="tl-when">May 2024 — Nov 2024</div>
+        <div>
+          <div class="tl-role">Mechanical Design Engineer — Intern (LV &amp; MV)</div>
+          <div class="tl-org">Siemens · Wendell, NC</div>
+          <div class="tl-desc">Designed electromechanical sub-assemblies for low- and medium-voltage power-distribution equipment in Siemens NX. Redesigned busbars and switchgear door components with alignment features to improve assembly fit and cut installation errors. Managed BOMs, Material Master, and component libraries in Teamcenter.</div>
+          <div class="tl-tags"><span>NX</span><span>GD&amp;T</span><span>Teamcenter</span><span>BOM / MM</span><span>ECO/ECN</span></div>
+        </div>
+      </div>
+
+      <div class="tl-row">
+        <div class="tl-when">Jan 2023 — Jul 2023</div>
+        <div>
+          <div class="tl-role">Mechanical Design Engineer</div>
+          <div class="tl-org">Laxmi Techno Works · Pune, India</div>
+          <div class="tl-desc">Owned end-to-end design of custom industrial machines in Creo — from customer requirements to fabrication-ready releases — accelerating iteration cycles ~15%, reducing prototype rework ~12%, and improving dimensional compliance ~10% through tolerance and simulation-driven validation.</div>
+          <div class="tl-tags"><span>Creo</span><span>2D Drawings</span><span>DFMEA</span><span>DFM</span><span>Tooling</span></div>
+        </div>
+      </div>
+
+      <div class="tl-row">
+        <div class="tl-when">Feb 2021 — Jul 2021</div>
+        <div>
+          <div class="tl-role">Mechanical Engineer — Intern</div>
+          <div class="tl-org">EAMS Engineering &amp; Management · Pune, India</div>
+          <div class="tl-desc">Optimized manufacturing line balancing and capacity planning, and built a centralized documentation framework that improved operational transparency across cross-functional teams.</div>
+          <div class="tl-tags"><span>Line balancing</span><span>Capacity planning</span><span>Documentation</span></div>
+        </div>
+      </div>
+
+      <div class="tl-row">
+        <div class="tl-when">May 2019 — Jun 2019</div>
+        <div>
+          <div class="tl-role">Mechanical Engineer — Intern</div>
+          <div class="tl-org">Solitaire Engineers · Pune, India</div>
+          <div class="tl-desc">Created GD&amp;T-based production drawings in AutoCAD with machining process documentation and performed dimensional inspections on 20+ components.</div>
+          <div class="tl-tags"><span>AutoCAD</span><span>GD&amp;T</span><span>Inspection</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= SKILLS ================= -->
+<section class="block skills" id="skills">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="eyebrow sec-kicker">Toolbox</span>
+        <h2>Skills &amp; methods</h2>
+      </div>
+      <span class="idx">CORE STACK</span>
+    </div>
+    <div class="skill-grid reveal">
+      <div class="skill-card">
+        <h4>CAD &amp; Drafting</h4>
+        <ul><li>Siemens NX</li><li>Creo</li><li>SolidWorks</li><li>CATIA V5</li><li>Solid Edge</li><li>AutoCAD</li><li>2D detailing</li><li>Assembly design</li></ul>
+      </div>
+      <div class="skill-card">
+        <h4>Standards &amp; Tolerancing</h4>
+        <ul><li>GD&amp;T (ASME Y14.5)</li><li>Tolerance stack-up</li><li>Dimensional inspection</li><li>Drafting standards</li></ul>
+      </div>
+      <div class="skill-card">
+        <h4>Design &amp; Manufacturing</h4>
+        <ul><li>DFM / DFA</li><li>Sheet metal design</li><li>Tooling &amp; fixtures</li><li>Material selection</li><li>Prototype &amp; test</li></ul>
+      </div>
+      <div class="skill-card">
+        <h4>Analysis &amp; Simulation</h4>
+        <ul><li>ANSYS Mechanical</li><li>Static structural</li><li>Thermal-structural</li><li>FMEA / DFMEA</li><li>Parametric optimization</li></ul>
+      </div>
+      <div class="skill-card">
+        <h4>PLM &amp; Documentation</h4>
+        <ul><li>Siemens Teamcenter</li><li>SAP (MM, BOMs)</li><li>ECO / ECN</li><li>Work instructions</li></ul>
+      </div>
+      <div class="skill-card">
+        <h4>Programming &amp; Tools</h4>
+        <ul><li>Python</li><li>MATLAB</li><li>Unity</li><li>Unreal Engine</li><li>Blender</li><li>Excel</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EDUCATION / CERTS ================= -->
+<section class="block" id="education">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="eyebrow sec-kicker">Credentials</span>
+        <h2>Education &amp; certifications</h2>
+      </div>
+    </div>
+    <div class="edu-grid reveal">
+      <div>
+        <div class="edu-item">
+          <div class="d">M.Eng., Mechanical Engineering</div>
+          <div class="s">University of Cincinnati · Cincinnati, OH, USA</div>
+          <div class="y">Dec 2024</div>
+        </div>
+        <div class="edu-item">
+          <div class="d">B.E., Mechanical Engineering</div>
+          <div class="s">Maharashtra Institute of Technology · Pune, India</div>
+          <div class="y">Apr 2020</div>
+        </div>
+      </div>
+      <div>
+        <div class="certs">
+          <div class="c"><span class="cn">CERT/01</span><span>Siemens NX Mastery — Advanced Design &amp; Applications</span></div>
+          <div class="c"><span class="cn">CERT/02</span><span>AI for Design &amp; Optimization</span></div>
+          <div class="c"><span class="cn">CERT/03</span><span>Generative AI — Introduction &amp; Applications</span></div>
+          <div class="c"><span class="cn">CERT/04</span><span>Python for Data Science</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="block contact grid-bg" id="contact">
+  <div class="wrap">
+    <span class="eyebrow sec-kicker">Get in touch</span>
+    <h2>Let's build something that has to work.</h2>
+    <p class="sub">Open to mechanical design and product development roles. Happy to walk through any project in detail — reach out and let's talk.</p>
+    <div class="contact-actions">
+      <a class="cbtn solid" href="mailto:priyaanilpatilnsk@gmail.com">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 7l9 6 9-6"/></svg>
+        Email me
+      </a>
+      <a class="cbtn" href="https://linkedin.com/in/priyanka1911patil" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="cbtn" href="assets/Priyanka_Patil_Resume_Master.pdf" target="_blank" rel="noopener">Résumé ↗</a>
+    </div>
+    <div class="finfo">
+      <div><div class="k">Email</div><div class="v"><a href="mailto:priyaanilpatilnsk@gmail.com">priyaanilpatilnsk@gmail.com</a></div></div>
+      <div><div class="k">Phone</div><div class="v"><a href="tel:+14253648406">+1 (425) 364-8406</a></div></div>
+      <div><div class="k">Location</div><div class="v">Cincinnati, OH · USA</div></div>
+      <div><div class="k">University</div><div class="v"><a href="mailto:patilp2@mail.uc.edu">patilp2@mail.uc.edu</a></div></div>
+    </div>
+    <div class="foot-btm">
+      <span>PRIYANKA PATIL · MECHANICAL DESIGN ENGINEER</span>
+      <span>DWG PORTFOLIO · REV B</span>
+    </div>
+  </div>
+</section>
+
+<script>
+// mobile nav
+const t=document.getElementById('navtoggle'),l=document.getElementById('navlinks');
+t&&t.addEventListener('click',()=>l.classList.toggle('open'));
+l&&l.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>l.classList.remove('open')));
+
+// scroll reveal
+const io=new IntersectionObserver((es)=>{
+  es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// hero dimension-line draw-in
+const dl=document.querySelector('.dl-anim');
+if(dl&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+  const len=dl.getTotalLength();
+  dl.style.strokeDasharray=len;dl.style.strokeDashoffset=len;
+  requestAnimationFrame(()=>{
+    dl.style.transition='stroke-dashoffset 1.1s cubic-bezier(.2,.7,.2,1) .25s';
+    dl.style.strokeDashoffset=0;
+  });
+}
+</script>
+</body>
+</html>
