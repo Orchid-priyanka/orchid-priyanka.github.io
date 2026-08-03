@@ -96,37 +96,41 @@ header.nav{
 }
 
 .hero-photo img{
-  width:360px;
-  height:360px;
+  width:320px;
+  height:320px;
   border-radius:50%;
   object-fit:cover;
+  object-position:center top;
   border:2px solid var(--ink);
   box-shadow:var(--shadow);
-  background:#0c1418;
+  background:#fff;
 }
 
 /* dimension line under name (signature element) */
-.dimline{margin-top:26px;max-width:430px}
-.dimline svg{width:100%;height:34px;overflow:visible}
-.dimline .dl{stroke:var(--accent);stroke-width:1.4;fill:none}
-.dimline .ext{stroke:var(--ink-3);stroke-width:1;fill:none}
-.dimtxt{font-family:"IBM Plex Mono",monospace;font-size:11.5px;fill:var(--ink-2);letter-spacing:.08em}
+.experience-line{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  max-width:380px;
+  margin-top:28px;
+}
+
+.experience-line span{
+  height:1px;
+  background:var(--accent);
+  flex:1;
+}
+
+.experience-line div{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:10.5px;
+  letter-spacing:.08em;
+  color:var(--ink-2);
+  white-space:nowrap;
+}
 
 /* hero drawing frame */
-.dwg{position:relative;background:var(--card);border:1.5px solid var(--ink);box-shadow:var(--shadow)}
-.dwg .view{position:relative;overflow:hidden;background:#0c1418}
-.dwg .view img{width:100%;height:100%;object-fit:cover;aspect-ratio:16/9;filter:contrast(1.03)}
-.dwg .corner{position:absolute;width:12px;height:12px;border:1.5px solid var(--accent)}
-.c-tl{top:8px;left:8px;border-right:none;border-bottom:none}
-.c-tr{top:8px;right:8px;border-left:none;border-bottom:none}
-.c-bl{bottom:8px;left:8px;border-right:none;border-top:none}
-.c-br{bottom:8px;right:8px;border-left:none;border-top:none}
-/* title block */
-.titleblock{display:grid;grid-template-columns:repeat(4,1fr);border-top:1.5px solid var(--ink)}
-.tb-cell{padding:9px 12px;border-right:1px solid var(--line);font-family:"IBM Plex Mono",monospace}
-.tb-cell:last-child{border-right:none}
-.tb-cell .k{font-size:9.5px;letter-spacing:.12em;color:var(--ink-3);text-transform:uppercase}
-.tb-cell .v{font-size:12.5px;color:var(--ink);margin-top:2px;font-weight:500}
+
 
 /* ================= CAPABILITIES STRIP ================= */
 .caps{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--paper-2)}
@@ -412,21 +416,10 @@ section.block{padding:88px 0}
       <div class="role">Concept → CAD → GD&amp;T → Prototype → Release</div>
       <p class="lead">I take metal parts and electromechanical assemblies from concept through design, analysis, and release to manufacturing — grounded in GD&amp;T, tolerance stack-ups, and DFM/DFA.</p>
 
-      <div class="dimline" aria-hidden="true">
-  <svg viewBox="0 0 430 34" preserveAspectRatio="none">
-    <path class="ext" d="M45 6 V28"/>
-    <path class="ext" d="M385 6 V28"/>
-
-    <path class="dl dl-anim" d="M45 17 H385"/>
-
-    <path class="dl" d="M45 17 l8 -4 v8 z" fill="var(--accent)"/>
-    <path class="dl" d="M385 17 l-8 -4 v8 z" fill="var(--accent)"/>
-
-    <rect x="145" y="9" width="140" height="16" fill="var(--paper)"/>
-    <text class="dimtxt" x="215" y="21" text-anchor="middle">
-      ~3 YRS · DESIGN·MFG·R&amp;D
-    </text>
-  </svg>
+<div class="experience-line">
+  <span></span>
+  <div>~3 YRS · DESIGN · MFG · R&amp;D</div>
+  <span></span>
 </div>
 
       <div class="hero-actions">
@@ -441,13 +434,12 @@ section.block{padding:88px 0}
       </div>
     </div>
 
-    <div class="dwg reveal">
-      <div class="dwg reveal">
-  <div class="view">
-    <img src="images/ar-yolo-detection.jpg"
-         alt="Portrait of Priyanka Patil" />
-  </div>
+    <div class="hero-photo reveal">
+  <img src="images/P_Patil.png"
+       alt="Portrait of Priyanka Patil">
 </div>
+
+  </div>
 </section>
 
 <!-- ================= CAPABILITIES ================= -->
