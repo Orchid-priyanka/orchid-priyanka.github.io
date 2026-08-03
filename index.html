@@ -160,112 +160,105 @@ section.block{padding:88px 0}
 .stat .n{font-family:"Archivo";font-weight:800;font-size:26px;color:var(--blue);letter-spacing:-.01em}
 .stat .l{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.06em;color:var(--ink-3);text-transform:uppercase;margin-top:3px}
 
-<!-- ================= DRAFTING FEATURE (dark) ================= -->
-<section class="block draft grid-bg" id="drafting">
-  <div class="wrap">
-
-    <div class="sec-head reveal">
-      <div>
-        <span class="eyebrow sec-kicker">Detailed Drafting</span>
-        <h2>Drawings built for the shop floor</h2>
-      </div>
-      <span class="idx">ASME Y14.5 · SIEMENS NX</span>
-    </div>
-
-
-    <!-- DRAFTING PROJECT 01 -->
-    <div class="draft-project reveal">
-
-      <div class="draft-project-label">DRAFTING PROJECT 01</div>
-
-      <div class="draft-grid">
-
-        <div class="dframe">
-          <img src="images/gdt-drawing.jpg"
-               alt="2D manufacturing drawing with dimensions, tolerances, and GD&T">
-        </div>
-
-        <div>
-          <h3>Production Drawing &amp; GD&amp;T</h3>
-
-          <p>
-            Developed <strong style="color:#fff">fabrication-ready engineering drawings</strong>
-            with dimensions, tolerances, material specifications, and manufacturing
-            information for production and inspection.
-          </p>
-
-          <ul class="pts">
-            <li>GD&amp;T &amp; tolerance stack-up analysis for fit and clearance</li>
-            <li>Title blocks, dimensions, tolerances, and revision control</li>
-            <li>Dimensional inspection against engineering drawings</li>
-            <li>DFM / DFA feedback incorporated into the CAD design</li>
-          </ul>
-        </div>
-
-      </div>
-    </div>
-
-
-    <!-- DRAFTING PROJECT 02 -->
-    <div class="draft-project reveal">
-
-      <div class="draft-project-label">DRAFTING PROJECT 02</div>
-
-      <div class="draft-grid">
-
-        <div class="dframe">
-          <img src="images/lithography-assembly-drawing.png"
-               alt="Siemens NX assembly drawing of semiconductor lithography equipment with orthographic views, assembly balloons, dimensions, and BOM">
-        </div>
-
-        <div>
-          <h3>Semiconductor Lithography Equipment Assembly</h3>
-
-          <p>
-            Created a detailed <strong style="color:#fff">equipment-level assembly drawing</strong>
-            in Siemens NX for a semiconductor lithography system, documenting the
-            complete mechanical assembly for design communication and assembly reference.
-          </p>
-
-          <ul class="pts">
-            <li>Complete equipment assembly modeled and documented in Siemens NX</li>
-            <li>Orthographic and isometric assembly views</li>
-            <li>Component balloons linked to a 28-item bill of materials</li>
-            <li>Overall equipment dimensions and 1:1 drawing scale</li>
-          </ul>
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-</section>
-
-.draft-project{
-  margin-top:42px;
-  padding-top:42px;
-  border-top:1px solid var(--blue-line);
+/* ================= DRAFTING FEATURE (dark) ================= */
+.draft{
+  background:var(--blue);
+  color:#eaf1f4;
+  position:relative;
 }
 
-.draft-project:first-of-type{
-  margin-top:0;
-  padding-top:0;
-  border-top:none;
+.draft .wrap{
+  position:relative;
+  z-index:2;
 }
 
-.draft-project-label{
+.draft .eyebrow{
+  color:#7fd3df;
+}
+
+.draft .eyebrow::before{
+  background:#7fd3df;
+}
+
+.draft h2{
+  color:#fff;
+}
+
+.draft .sec-head .idx{
+  color:rgba(255,255,255,.5);
+}
+
+.draft-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  align-items:center;
+}
+
+.draft p{
+  color:rgba(234,241,244,.82);
+}
+
+.draft .dframe{
+  border:1.5px solid var(--blue-line);
+  background:#0b2b49;
+  padding:10px;
+  box-shadow:0 20px 50px -20px rgba(0,0,0,.6);
+}
+
+.draft .dframe img{
+  width:100%;
+  background:#fff;
+}
+
+.draft ul.pts{
+  list-style:none;
+  padding:0;
+  margin:22px 0 0;
+  display:grid;
+  gap:12px;
+}
+
+.draft ul.pts li{
   font-family:"IBM Plex Mono",monospace;
-  font-size:11px;
+  font-size:13px;
+  color:#cfe1e7;
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+}
+
+.draft ul.pts li::before{
+  content:"+";
+  color:#7fd3df;
+  font-weight:700;
+}
+
+/* second drafting example */
+.draft-example-2{
+  margin-top:58px;
+  padding-top:52px;
+  border-top:1px solid rgba(255,255,255,.16);
+}
+
+.draft-label{
+  display:block;
+  font-family:"IBM Plex Mono",monospace;
+  font-size:10.5px;
   letter-spacing:.14em;
   text-transform:uppercase;
   color:#7fd3df;
-  margin-bottom:14px;
+  margin-bottom:10px;
 }
 
-.draft-project h3{
+.draft-title{
   color:#fff;
-  font-size:24px;
-  margin-bottom:14px;
+  font-size:25px;
+  margin-bottom:16px;
+}
+
+.lithography-draft{
+  grid-template-columns:1.25fr .75fr;
 }
 /* ================= EXPERIENCE TIMELINE ================= */
 .tl{border-top:1px solid var(--line)}
@@ -436,7 +429,7 @@ section.block{padding:88px 0}
         <span class="eyebrow sec-kicker">Selected Work</span>
         <h2>Glimpses from the bench</h2>
       </div>
-      <span class="idx">04 PROJECTS</span>
+      <span class="idx">03 PROJECTS</span>
     </div>
 
     <!-- PROJECT 01 -->
@@ -511,27 +504,89 @@ section.block{padding:88px 0}
 <!-- ================= DRAFTING FEATURE (dark) ================= -->
 <section class="block draft grid-bg" id="drafting">
   <div class="wrap">
+
     <div class="sec-head reveal">
       <div>
         <span class="eyebrow sec-kicker">Detailed Drafting</span>
         <h2>Drawings built for the shop floor</h2>
       </div>
-      <span class="idx">ASME Y14.5</span>
+      <span class="idx">ASME Y14.5 · SIEMENS NX</span>
     </div>
+
+
+    <!-- DRAFTING EXAMPLE 01 -->
     <div class="draft-grid reveal">
-      <div class="dframe"><img src="images/gdt-drawing.jpg" alt="2D manufacturing drawing with dimensions, tolerances, and a GD&T title block"></div>
+
+      <div class="dframe">
+        <img src="images/gdt-drawing.jpg"
+             alt="2D manufacturing drawing with dimensions, tolerances, and a GD&T title block">
+      </div>
+
       <div>
-        <p>Every model earns its keep as a <strong style="color:#fff">fabrication-ready 2D drawing</strong>. I produce fully dimensioned, tolerance-driven manufacturing drawings with a complete title block, material callouts, and interpretation per ASME Y14.5 — the documents machinists and vendors actually build from.</p>
+        <span class="draft-label">PRODUCTION DRAWING</span>
+
+        <h3 class="draft-title">
+          Manufacturing Drawing &amp; GD&amp;T
+        </h3>
+
+        <p>
+          Every model earns its keep as a
+          <strong style="color:#fff">fabrication-ready 2D drawing</strong>.
+          I produce fully dimensioned, tolerance-driven manufacturing drawings
+          with complete title blocks, material callouts, and interpretation per
+          ASME Y14.5.
+        </p>
+
         <ul class="pts">
           <li>GD&amp;T &amp; tolerance stack-up analysis for fit and clearance</li>
           <li>Title blocks, BOMs, and revision control</li>
           <li>Dimensional inspection against print</li>
-          <li>DFM / DFA feedback folded back into the model</li>
+          <li>DFM / DFA feedback incorporated into the model</li>
         </ul>
       </div>
+
     </div>
+
+
+    <!-- DRAFTING EXAMPLE 02 -->
+    <div class="draft-example-2">
+
+      <div class="draft-grid reveal lithography-draft">
+
+        <div class="dframe">
+          <img src="images/lithography-assembly-drawing.png"
+               alt="Siemens NX assembly drawing of semiconductor lithography equipment">
+        </div>
+
+        <div>
+          <span class="draft-label">ASSEMBLY DOCUMENTATION</span>
+
+          <h3 class="draft-title">
+            Semiconductor Lithography Equipment
+          </h3>
+
+          <p>
+            Created a detailed
+            <strong style="color:#fff">equipment-level assembly drawing</strong>
+            in Siemens NX to document the mechanical architecture of a
+            semiconductor lithography system.
+          </p>
+
+          <ul class="pts">
+            <li>Orthographic and isometric assembly views</li>
+            <li>28-component bill of materials with item balloons</li>
+            <li>Overall equipment dimensions</li>
+            <li>Assembly-level design and documentation in Siemens NX</li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+
   </div>
 </section>
+     
 
 <!-- ================= EXPERIENCE ================= -->
 <section class="block" id="experience">
